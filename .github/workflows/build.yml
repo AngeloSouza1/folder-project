@@ -16,12 +16,10 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'
+          node-version: '20.x'
 
       - name: Build web-app
         run: |
-          # Definindo NODE_OPTIONS diretamente antes do build
-          export NODE_OPTIONS=--openssl-legacy-provider
           npm ci
           npm run build
 
