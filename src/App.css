@@ -1,128 +1,301 @@
+/* Importando a nova fonte 'Fira Code' */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
 /* Global Styles */
-.App {
-  text-align: center;
-  font-family: 'Arial', sans-serif;
-  color: #333;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Fira Code', monospace;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  font-size: 16px;
 }
 
-/* Logo Styles - if you want to use a logo */
-.App-logo {
-  height: 100px;
-  pointer-events: none;
+/* Variáveis de tema claro e escuro */
+:root {
+  --bg-color: #f5f5f5;
+  --text-color: #2e2e2e;
+  --primary-color: #ff6f61;
+  --secondary-color: #4a4a4a;
+  --card-bg-color: #ffffff;
+  --header-bg-color: #333;
+  --sidebar-bg-color: #eaeaea;
+  --sidebar-text-color: #2e2e2e;
+  --border-color: #ff6f61;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --about-section-bg: #f5f5f5; /* Fundo claro para seção Sobre Mim */
+  --about-section-text-color: #2e2e2e;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.dark-mode {
+  --bg-color: #202124;
+  --text-color: #f5f5f5;
+  --primary-color: #bb86fc;
+  --secondary-color: #a0a0a0;
+  --card-bg-color: #303134;
+  --header-bg-color: #1e1e1e;
+  --sidebar-bg-color: #121212;
+  --sidebar-text-color: #f5f5f5;
+  --border-color: #bb86fc;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --about-section-bg: #202124; /* Fundo escuro para seção Sobre Mim */
+  --about-section-text-color: #f5f5f5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Suavizando transições */
+* {
+  transition: all 0.3s ease;
 }
 
-/* Header */
-.App-header {
-  background-color: #282c34;
-  min-height: 50vh;
+/* Container Principal */
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background-color: var(--sidebar-bg-color);
   padding: 20px;
+  color: var(--sidebar-text-color);
+  position: fixed;
+  height: 100%;
+  box-shadow: 0 4px 10px var(--shadow-color);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: 2em;
-  color: white;
+  justify-content: space-between;
 }
 
-nav ul {
-  list-style-type: none;
+/* Ajuste para remover espaços */
+.sidebar,
+.main-content,
+.about-section,
+.welcome-section {
+  margin: 0;
   padding: 0;
 }
 
-nav ul li {
-  display: inline;
-  margin: 0 20px;
+/* Sidebar links */
+.sidebar h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--primary-color);
 }
 
-nav ul li a {
-  color: #61dafb;
-  text-decoration: none;
-  font-size: 1.2em;
+.sidebar ul {
+  list-style: none;
+  padding: 0;
 }
 
-nav ul li a:hover {
-  text-decoration: underline;
-}
-
-/* Section Styles */
-.App-section {
-  padding: 60px 20px;
-  max-width: 900px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.App-section h2 {
-  font-size: 2.5em;
-  color: #282c34;
+.sidebar ul li {
   margin-bottom: 20px;
 }
 
-.App-section p {
-  font-size: 1.2em;
-  line-height: 1.6;
-  color: #555;
-}
-
-.App-section ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.App-section ul li {
-  margin-bottom: 15px;
-}
-
-.App-section ul li a {
-  color: #61dafb;
+/* Sidebar links padrão sem sublinhado e cores ajustadas conforme o tema */
+.sidebar ul li a {
   text-decoration: none;
-  font-weight: bold;
+  color: var(--sidebar-text-color);
+  font-size: 1.1em;
+  padding: 10px;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.3s ease;
 }
 
-.App-section ul li a:hover {
-  text-decoration: underline;
+.sidebar ul li a:hover {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* Footer Link */
-.App-link {
-  color: #61dafb;
-  font-size: 1.2em;
+.sidebar h2 a {
+  text-decoration: none;
+  color: var(--primary-color);
 }
 
-.App-link:hover {
-  color: #21a1f1;
+.sidebar h2 a:hover {
+  text-decoration: none;
+  color: var(--primary-color); /* Mantém a cor mesmo ao passar o mouse */
+}
+
+/* Botão de alternância de tema */
+.theme-toggle {
+  margin-top: auto;
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 28px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--primary-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Main Content */
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% - 250px);
+  height: 100vh;
+  background-color: var(--bg-color);
+}
+
+/* Seção de boas-vindas */
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--card-bg-color);
+  padding: 50px;
+  box-shadow: 0 8px 16px var(--shadow-color);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.welcome-section h2 {
+  font-size: 3rem;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  animation: slideInFromLeft 0.8s ease-in-out;
+}
+
+.welcome-section p {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  max-width: 700px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+  animation: slideInFromRight 0.8s ease-in-out;
+}
+
+/* Seção Sobre Mim */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: var(--about-section-bg);
+  color: var(--about-section-text-color);
+  padding: 50px;
+  width: 100%;
+  height: 100vh;
+  box-shadow: 0 8px 16px var(--shadow-color);
+}
+
+/* Animações */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
-  .App-header {
-    font-size: 1.5em;
+  .main-content {
+    margin-left: 0;
+    padding: 20px;
   }
 
-  .App-section h2 {
-    font-size: 2em;
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    padding: 20px 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
   }
 
-  .App-section p {
-    font-size: 1em;
+  .about-section {
+    width: 100%;
+    padding: 30px;
   }
 
-  nav ul li {
-    margin: 0 10px;
+  .about-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .about-section p {
+    font-size: 1.3rem;
   }
 }
