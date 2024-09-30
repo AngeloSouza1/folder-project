@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20'  # Especificar a versão 20 do Node.js sem o sufixo 'x'
+          node-version: '20' 
 
       - name: Build web-app
         run: |
