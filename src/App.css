@@ -28,8 +28,10 @@ html, body {
   --border-color: #ff6f61;
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-radius: 12px;
-  --about-section-bg: #f5f5f5; /* Fundo claro para seção Sobre Mim */
+  --welcome-text-color: #2e2e2e;
+  --about-section-bg: #f5f5f5;
   --about-section-text-color: #2e2e2e;
+  --button-bg-color-dark: #bb86fc; /* Cor personalizada para o botão no modo escuro */
 }
 
 .dark-mode {
@@ -43,13 +45,46 @@ html, body {
   --sidebar-text-color: #f5f5f5;
   --border-color: #bb86fc;
   --shadow-color: rgba(0, 0, 0, 0.5);
-  --about-section-bg: #202124; /* Fundo escuro para seção Sobre Mim */
+  --welcome-text-color: #f5f5f5;
+  --about-section-bg: #202124;
   --about-section-text-color: #f5f5f5;
 }
 
 /* Suavizando transições */
 * {
   transition: all 0.3s ease;
+}
+
+/* Botão personalizado para "Ver Projetos" */
+.button-projects {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-decoration: none;
+}
+
+/* Estilo para o botão no modo escuro */
+.dark-mode .button-projects {
+  background-color: var(--button-bg-color-dark);
+}
+
+.button-projects:hover {
+  background-color: #ff8567;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+.button-projects:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Container Principal */
@@ -99,7 +134,6 @@ html, body {
   margin-bottom: 20px;
 }
 
-/* Sidebar links padrão sem sublinhado e cores ajustadas conforme o tema */
 .sidebar ul li a {
   text-decoration: none;
   color: var(--sidebar-text-color);
@@ -124,7 +158,7 @@ html, body {
 
 .sidebar h2 a:hover {
   text-decoration: none;
-  color: var(--primary-color); /* Mantém a cor mesmo ao passar o mouse */
+  color: var(--primary-color);
 }
 
 /* Botão de alternância de tema */
@@ -202,71 +236,96 @@ input:checked + .slider:before {
   text-align: center;
   background-color: var(--card-bg-color);
   padding: 50px;
+  border-radius: var(--border-radius);
   box-shadow: 0 8px 16px var(--shadow-color);
-  animation: fadeIn 1s ease-in-out;
+  transition: border 0.4s ease;
 }
 
 .welcome-section h2 {
   font-size: 3rem;
   color: var(--primary-color);
   margin-bottom: 20px;
-  animation: slideInFromLeft 0.8s ease-in-out;
 }
 
 .welcome-section p {
   font-size: 1.5rem;
-  color: var(--text-color);
+  color: var(--welcome-text-color);
   max-width: 700px;
   margin-bottom: 40px;
   line-height: 1.6;
-  animation: slideInFromRight 0.8s ease-in-out;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Borda vermelha no tema claro */
+.welcome-section:hover {
+  border: 2px solid red;
+}
+
+/* Borda amarela no tema escuro */
+.dark-mode .welcome-section:hover {
+  border: 2px solid yellow;
 }
 
 /* Seção Sobre Mim */
 .about-section {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  background-color: var(--about-section-bg);
+  background-color: var(--sidebar-bg-color);
   color: var(--about-section-text-color);
-  padding: 50px;
+  padding: 20px 50px;
   width: 100%;
   height: 100vh;
   box-shadow: 0 8px 16px var(--shadow-color);
+  position: relative;
 }
 
-/* Animações */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.about-section h2 {
+  font-size: 3.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
 }
 
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.about-section p {
+  font-size: 1.5rem;
+  color: var(--about-section-text-color);
+  max-width: 700px;
+  margin-top: 20px;
+  line-height: 1.6;
 }
 
-@keyframes slideInFromRight {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+/* Ajuste da altura das divs na seção Sobre Mim */
+.about-content {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: stretch; /* Estica para preencher a altura da div */
+  width: 100%; /* Garante que ocupa toda a largura disponível */
+  background-color: var(--sidebar-bg-color); /* Cor de fundo da sidebar */
+  border-radius: 12px; /* Bordas arredondadas para um visual mais suave */
+}
+
+.about-text {
+  flex: 1; /* Permite que a div de texto ocupe o espaço disponível */
+  margin-right: 20px; /* Espaço entre o texto e a imagem */
+  text-align: justify; /* Justifica o texto */
+  padding: 20px; /* Adiciona espaço interno, indentando o texto */
+  background-color: var(--sidebar-bg-color); /* Cor de fundo da sidebar */
+  border-radius: 12px; /* Bordas arredondadas para o texto */
+}
+
+.about-image {
+  flex: 0 0 40%; /* Define uma largura fixa para a imagem */
+  height: 100%; /* Garante que a imagem preencha a altura da div */
+}
+
+.banner-image {
+  width: 100%; /* Ajusta a imagem para ocupar toda a largura da div */
+  height: 100%; /* Garante que a imagem ocupe toda a altura da div */
+  object-fit: cover; /* Ajusta a imagem para cobrir a área sem distorção */
+  border-radius: 12px; /* Bordas arredondadas para um visual mais suave */
 }
 
 /* Responsividade */
@@ -299,3 +358,130 @@ input:checked + .slider:before {
     font-size: 1.3rem;
   }
 }
+
+.divider {
+  width: 100%; /* Largura total */
+  height: 2px; /* Altura da linha */
+  background-color: var(--primary-color); /* Cor da linha */
+  margin: 20px 0; /* Margem acima e abaixo da linha */
+  border: none; /* Remove a borda padrão */
+}
+
+/* Seção Projetos */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background-color: var(--sidebar-bg-color); /* Usando a cor da sidebar */
+  color: var(--about-section-text-color);
+  padding: 20px 50px;
+  width: 100%;
+  height: 100vh;
+  box-shadow: 0 8px 16px var(--shadow-color);
+  position: relative;
+}
+
+.projects-section h2 {
+  font-size: 3rem; /* Tamanho da fonte do título */
+  color: var(--primary-color);
+  margin-bottom: 10px; /* Reduzir espaço entre título e linha */
+}
+
+.projects-section p {
+  font-size: 1.2rem; /* Reduzindo o tamanho da fonte do texto */
+  color: var(--about-section-text-color);
+  max-width: 100%; /* Largura total */
+  margin-top: 20px;
+  line-height: 1.6;
+  text-align: justify; /* Justifica o texto */
+}
+
+/* Ajuste da altura das divs na seção Projetos */
+.projects-content {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: stretch; /* Estica para preencher a altura da div */
+  width: 100%; /* Garante que ocupa toda a largura disponível */
+  background-color: var(--sidebar-bg-color); /* Cor de fundo da sidebar */
+  border-radius: 12px; /* Bordas arredondadas para um visual mais suave */
+  padding: 20px; /* Adiciona espaço interno */
+}
+
+.projects-text {
+  flex: 1; /* Permite que a div de texto ocupe o espaço disponível */
+  text-align: justify; /* Justifica o texto */
+  padding: 20px; /* Adiciona espaço interno, indentando o texto */
+  background-color: var(--sidebar-bg-color); /* Cor de fundo da sidebar */
+  border-radius: 12px; /* Bordas arredondadas para o texto */
+}
+
+.projects-list {
+  margin: 20px 0; /* Adiciona margens acima e abaixo da lista */
+  padding-left: 20px; /* Indentação para a lista */
+}
+
+.projects-list li {
+  margin-bottom: 10px; /* Espaçamento entre os itens da lista */
+  font-size: 1rem; /* Reduz o tamanho da fonte para os itens da lista */
+}
+
+/* Seção dos Cards de Projetos */
+.projects-cards {
+  display: flex;
+  justify-content: space-around; /* Espaço entre os cards */
+  flex-wrap: wrap; /* Permite que os cards se movam para a próxima linha em telas menores */
+  margin-top: 40px; /* Espaço acima dos cards */
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 10px var(--shadow-color);
+  padding: 20px;
+  margin: 10px;
+  flex: 0 1 300px;
+  text-align: center;
+  transition: border-color 0.3s ease;
+  border: 2px solid transparent;
+}
+
+
+.card h3 {
+  font-size: 1.5rem; /* Tamanho do título do card */
+  color: var(--primary-color); /* Cor do título */
+  margin-bottom: 10px; /* Espaço abaixo do título */
+}
+
+.card p {
+  font-size: 1rem; /* Tamanho do texto de descrição */
+  color: var(--text-color); /* Cor do texto */
+  margin-bottom: 20px; /* Espaço abaixo da descrição */
+}
+
+
+.card:hover {
+  border-color: yellow; /* Muda a cor da borda para amarelo ao passar o mouse */
+}
+
+
+.card-image {
+  width: 100%; /* Aumenta a largura da imagem para 100% */
+  height: auto; /* Mantém a proporção da altura */
+  border-radius: 12px; /* Bordas arredondadas para a imagem, se desejado */
+}
+
+
+
+
+.projects-cards-container {
+  overflow-x: auto; /* Permite o scroll horizontal */
+  white-space: nowrap; /* Evita que os cards se quebrem em várias linhas */
+  padding: 20px 0; /* Adiciona espaçamento acima e abaixo */
+}
+
+
+
+
+
