@@ -13,16 +13,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      - name: Set environment variable
-        run: echo "NODE_OPTIONS=--openssl-legacy-provider" >> $GITHUB_ENV
-
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Ou '16', se você preferir
+          node-version: '20'
 
       - name: Build web-app
         run: |
+          # Definindo NODE_OPTIONS diretamente antes do build
+          export NODE_OPTIONS=--openssl-legacy-provider
           npm ci
           npm run build
 
