@@ -181,7 +181,7 @@ function App() {
           </p>
         <p>
           <i className="fab fa-github"></i>
-          GitHub: <a href="https://github.com/AngeloSouza1/AngeloSouza1" target="_blank" rel="noopener noreferrer">Angelo Souza</a>
+          GitHub: <a href="https://github.com/AngeloSouza1" target="_blank" rel="noopener noreferrer">Angelo Souza</a>
         </p>
         <p>
           <i className="fab fa-wakatime"></i>

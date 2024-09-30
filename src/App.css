@@ -1,7 +1,6 @@
 /* Importando a nova fonte 'Fira Code' */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
 
-
 /* Global Styles */
 html, body {
   height: 100%;
@@ -541,4 +540,27 @@ input:checked + .slider:before {
   color: var(--primary-color); /* Cor dos ícones */
 }
 
+/* Efeitos de animação */
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(50px); /* Move a mensagem para baixo */
+  }
+  100% {
+    opacity: 1; /* Torna totalmente visível */
+    transform: translateY(0); /* Move a mensagem para sua posição original */
+  }
+}
 
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out forwards; /* Animação de desvanecimento */
+}
+
+.slide-in {
+  animation: slideIn 0.5s ease-in-out forwards; /* Animação de deslizamento */
+}
+
+/* Adicione a classe para animar a seção do portfólio */
+.portfolio-section {
+  animation: slideIn 0.5s ease-in-out forwards; /* Animação de deslizamento */
+}
