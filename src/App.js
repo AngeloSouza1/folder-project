@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css'; // Certifique-se de que o caminho do CSS está correto
 import backgroundImage from './images/img1.jpeg'; 
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
@@ -104,9 +105,6 @@ function App() {
         </p>
       </div>
     </div>
-
-
-
     
 {/* Cards de Projetos */}
 <div className="projects-cards-container">
@@ -161,23 +159,40 @@ function App() {
     </div>
   </div>
 </div>
-
-
-
+  </div>
+)}
+     
+     {activeSection === 'contato' && (
+  <div id="contato" className="App-section full-height contato-section animated-section">
+    <h2 className="fade-in slide-in-left">Contato</h2>
+    <hr className="divider" /> {/* Linha divisória */}
+    <div className="contato-content">
+      <p className="fade-in slide-in-right contact-message">
+        Se você deseja entrar em contato, fique à vontade para me enviar um email ou conectar-se comigo no LinkedIn!
+      </p>
+      <div className="contato-info">
+        <p>
+          <i className="fas fa-envelope"></i>
+          Email: <a href="mailto:angelosouza@gmail.com">angelosouza@gmail.com</a>
+        </p>
+        <p>
+          <i className="fab fa-linkedin"></i>
+          LinkedIn: <a href="https://www.linkedin.com/in/angeloafsouza/" target="_blank" rel="noopener noreferrer">Angelo Souza</a>
+          </p>
+        <p>
+          <i className="fab fa-github"></i>
+          GitHub: <a href="https://github.com/AngeloSouza1/AngeloSouza1" target="_blank" rel="noopener noreferrer">Angelo Souza</a>
+        </p>
+        <p>
+          <i className="fab fa-wakatime"></i>
+          Wakatime: <a href="https://wakatime.com/@AAFS1981" target="_blank" rel="noopener noreferrer">Angelo Souza</a>
+        </p>
+      </div>
+    </div>
   </div>
 )}
 
 
-
-
-
-          {activeSection === 'contato' && (
-            <div id="contato" className="App-section full-height">
-              <h2>Contato</h2>
-              <p>Email: angelosouza@gmail.com</p>
-              <p>LinkedIn: <a href="https://www.linkedin.com/in/angelosouza1/">Angelo Souza</a></p>
-            </div>
-          )}
         </main>
       </div>
     </div>

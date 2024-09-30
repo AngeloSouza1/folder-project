@@ -1,6 +1,7 @@
 /* Importando a nova fonte 'Fira Code' */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
 
+
 /* Global Styles */
 html, body {
   height: 100%;
@@ -436,17 +437,16 @@ input:checked + .slider:before {
 }
 
 .card {
-  background-color: var(--card-bg-color);
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px var(--shadow-color);
-  padding: 20px;
-  margin: 10px;
-  flex: 0 1 300px;
-  text-align: center;
-  transition: border-color 0.3s ease;
-  border: 2px solid transparent;
+  background-color: var(--card-bg-color); /* Cor de fundo do card */
+  border-radius: var(--border-radius); /* Bordas arredondadas */
+  box-shadow: 0 4px 10px var(--shadow-color); /* Sombra do card */
+  padding: 20px; /* Espaço interno do card */
+  margin: 10px; /* Espaço entre os cards */
+  flex: 0 1 300px; /* Largura mínima de 300px para cada card */
+  text-align: center; /* Centraliza o texto dentro do card */
+  border: 2px solid transparent; /* Borda padrão transparente */
+  transition: border-color 0.3s ease; /* Transição suave para a cor da borda */
 }
-
 
 .card h3 {
   font-size: 1.5rem; /* Tamanho do título do card */
@@ -461,8 +461,14 @@ input:checked + .slider:before {
 }
 
 
+/* Efeito ao passar o mouse sobre o card no modo claro */
 .card:hover {
-  border-color: yellow; /* Muda a cor da borda para amarelo ao passar o mouse */
+  border-color: red; /* Borda vermelha no modo claro */
+}
+
+/* Efeito ao passar o mouse sobre o card no modo escuro */
+.dark-mode .card:hover {
+  border-color: yellow; /* Borda amarela no modo escuro */
 }
 
 
@@ -472,16 +478,67 @@ input:checked + .slider:before {
   border-radius: 12px; /* Bordas arredondadas para a imagem, se desejado */
 }
 
-
-
-
 .projects-cards-container {
   overflow-x: auto; /* Permite o scroll horizontal */
   white-space: nowrap; /* Evita que os cards se quebrem em várias linhas */
   padding: 20px 0; /* Adiciona espaçamento acima e abaixo */
 }
 
+.contato-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  background-color: var(--sidebar-bg-color); /* Usando a cor da sidebar */
+  color: var(--about-section-text-color);
+  padding: 40px 20px; /* Adicionando mais espaço interno */
+  width: 100%;
+  height: 100vh; /* Altura da seção */
+  box-shadow: 0 8px 16px var(--shadow-color);
+  position: relative;
+}
 
+.contato-section h2 {
+  font-size: 3rem; /* Tamanho da fonte do título */
+  color: var(--primary-color);
+  margin-bottom: 20px; /* Espaço abaixo do título */
+}
 
+.contato-content {
+  max-width: 700px; /* Largura máxima para centralizar o conteúdo */
+  margin: 20px; /* Margem ao redor do conteúdo */
+}
+
+.contato-info {
+  font-size: 1.5rem; /* Aumentando o tamanho da fonte para 1.5rem */
+  color: var(--text-color);
+  line-height: 1.5; /* Espaçamento entre as linhas */
+}
+
+.contato-info a {
+  color: var(--primary-color); /* Cor dos links */
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+.contato-info a:hover {
+  text-decoration: underline; /* Sublinha os links ao passar o mouse */
+}
+
+.contact-message {
+  font-size: 1.5rem; /* Aumenta o tamanho da fonte */
+  line-height: 1.6; /* Mantém a altura da linha para melhor legibilidade */
+  color: var(--text-color); /* Mantém a cor do texto conforme o tema */
+  margin: 20px 0; /* Adiciona margens para espaçamento */
+}
+.contato-info p {
+  font-size: 1.2rem; /* Aumentar a fonte, se desejado */
+  margin: 10px 0; /* Espaçamento entre os itens */
+}
+
+.contato-info i {
+  margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+  color: var(--primary-color); /* Cor dos ícones */
+}
 
 
