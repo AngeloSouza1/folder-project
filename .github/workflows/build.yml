@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '20' # Garanta que você está especificando a versão 20 do Node.js
+          node-version: '20' # Confirmando que está usando a versão 20
 
       - name: Build web-app
         run: |
